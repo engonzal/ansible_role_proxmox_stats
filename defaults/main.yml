@@ -1,0 +1,5 @@
+---
+# defaults file for ansible_role_proxmox_metrics
+proxmox_stats_influx_server: influx
+proxmox_stats_influx_port: "8089"
+proxmox_stats_status_path: "/etc/pve/status.cfg"

@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Create proxmox config directory to mimic a pve host
+      file:
+        dest: /etc/pve
+        state: directory
+  roles:
+    - role: engonzal.proxmox_stats

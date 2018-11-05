@@ -1,0 +1,25 @@
+---
+# tasks file for ansible_role_proxmox_metrics
+
+# Note that we cant place the template directly due to
+# how proxmox does posix
+# https://github.com/ansible/ansible/issues/19731
+- name: Create Proxmox status config file in /root
+  template:
+    src: status.cfg.j2
+    dest: /tmp/status.cfg
+
+- name: check if status.cfg exists
+  stat:
+    path: "{{ proxmox_stats_status_path }}"
+  register: proxmox_stats_statuscfg_stat
+
+- name: Get contents of status.cfg
+  command: cat {{ proxmox_stats_status_path|quote }}
+  changed_when: false
+  register: proxmox_stats_statuscfg_out
+  when: proxmox_stats_statuscfg_stat.stat.exists|bool == true
+
+- name: copy status.cfg to the pve dir
+  command: cp /tmp/status.cfg /etc/pve/status.cfg
+  when: proxmox_stats_statuscfg_out.stdout is undefined or (proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_port) != -1 and proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_server) != -1)

@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  role_name: proxmox_stats
+  author: engonzal
+  description: Configure Proxmox influxdb metrics config.
+  license: BSD
+  company: buildahomelab.com
+  min_ansible_version: 2.4
+  galaxy_tags:
+    - proxmox
+    - metrics
+    - stats
+    - influx
+    - base
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+dependencies: []
