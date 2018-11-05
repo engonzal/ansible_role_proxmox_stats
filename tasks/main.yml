@@ -22,4 +22,4 @@
 
 - name: copy status.cfg to the pve dir
   command: cp /tmp/status.cfg /etc/pve/status.cfg
-  when: proxmox_stats_statuscfg_out.stdout is undefined or (proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_port) != -1 and proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_server) != -1)
+  when: proxmox_stats_statuscfg_out.stdout is undefined or (proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_port) == -1 and proxmox_stats_statuscfg_out.stdout.find(proxmox_stats_influx_server) == -1)

@@ -1,5 +1,6 @@
 ### Ansible Roles: proxmox_stats
 Role to add the InfluxDB metrics configurations for Proxmox virtualization.  More info on Proxmox stats available [here](https://pve.proxmox.com/wiki/External_Metric_Server).
+[![Build Status](https://travis-ci.org/engonzal/ansible_role_proxmox_stats.svg?branch=master)](https://travis-ci.org/engonzal/ansible_role_proxmox_stats)
 
 #### Role Variables
 Setting the InfluxDB servername and port is supported.  Note that the UDP input is required to be configured on your InfluxDB server.  note below "influx" should be "your-influx-database-hostname"
